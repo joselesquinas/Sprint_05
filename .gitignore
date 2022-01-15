@@ -1,0 +1,28 @@
+# Ignora la carpeta node_modules
+node_modules
+
+# Ignora todos los archivos de texto
+*.txt
+
+# Ignora los archivos relacionados a API keys
+# .env
+
+# Ignora archivos de configuración SASS
+# .sass-cache
+
+
+
+# Configuracion typescript
+.package-lock.json
+.package.json
+.tsconfig.json
+
+# VS Code files for those working on multiple tools
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+# Local History for Visual Studio Code
+.history/
