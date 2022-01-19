@@ -10,16 +10,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-function fetchJoke() {
-    return __awaiter(this, void 0, void 0, function* () {
+// async await para web https://icanhazdadjoke.com
+const obtenerJoke = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
         const response = yield fetch("https://icanhazdadjoke.com", {
             headers: {
                 Accept: "application/json",
             },
         });
-        const joke = response.json();
-        console.log(joke);
-    });
-}
-fetchJoke();
+        const joke = yield response.json();
+        console.log(joke.joke);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+obtenerJoke();
+// async await para web https://api.chucknorris.io/jokes/random
+const obtenerchuck = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield fetch("https://api.chucknorris.io/jokes/random");
+        const norris = yield response.json();
+        console.log(norris.value);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+obtenerchuck();
 //# sourceMappingURL=app.js.map
