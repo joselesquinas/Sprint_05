@@ -1,41 +1,39 @@
 document.addEventListener("DOMContentLoaded", fetchDadJoke, false);
 
 const API_URL: string = "https://icanhazdadjoke.com";
-const parrafo = document.querySelector("#p-joke") as HTMLParagraphElement;
-let boton = document.getElementById("btn-new-joke") as HTMLButtonElement;
+const Paragraph = document.querySelector("#p-joke") as HTMLParagraphElement;
+const Button = document.getElementById("btn-new-joke") as HTMLButtonElement;
 
-interface reportAcudits {
-  joke: string;
-  score: number;
-  date: Date;
+interface ReportAcudits {
+   joke: string;
+   score: number;
+   date: Date;
 }
+
+
 // reportJokes
-
 async function fetchDadJoke() {
-  const response = await fetch(API_URL, {
-    headers: {
-      Accept: "application/json",
-    },
-  });
-  const myjoke = await response.json();
-  parrafo.textContent = myjoke.joke;
-  listArray();
+   const response = await fetch(API_URL, {
+      headers: {
+         Accept: "application/json",
+      },
+   });
+   const myjoke = await response.json();
+   Paragraph.textContent = myjoke.joke;
 }
 
-function listArray(){
-  let reportJokes = {} as reportAcudits;
-  reportJokes = {
-    joke: parrafo.innerText,
-    score: 1,
-    date: new Date(Date.now()),
-  };
-  let myArray = [];
-  myArray.push(reportJokes);
-  console.log(myArray);
-
+function listArray() {
+   let reportJokes = {} as ReportAcudits;
+   reportJokes = {
+      joke: Paragraph.innerText,
+      score: 1,
+      date: new Date(Date.now()),
+   };
+   let myArray = [];
+   myArray.push(reportJokes);
+   console.log(myArray);
+   fetchDadJoke();
 }
 
-
-
-boton.addEventListener("click", fetchDadJoke);
+Button.addEventListener("click", listArray);
 //====================

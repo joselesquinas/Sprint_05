@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 document.addEventListener("DOMContentLoaded", fetchDadJoke, false);
 const API_URL = "https://icanhazdadjoke.com";
-const parrafo = document.querySelector("#p-joke");
-let boton = document.getElementById("btn-new-joke");
+const Paragraph = document.querySelector("#p-joke");
+const Button = document.getElementById("btn-new-joke");
 // reportJokes
 function fetchDadJoke() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -21,21 +21,21 @@ function fetchDadJoke() {
             },
         });
         const myjoke = yield response.json();
-        parrafo.textContent = myjoke.joke;
-        listArray();
+        Paragraph.textContent = myjoke.joke;
     });
 }
 function listArray() {
     let reportJokes = {};
     reportJokes = {
-        joke: parrafo.innerText,
+        joke: Paragraph.innerText,
         score: 1,
         date: new Date(Date.now()),
     };
     let myArray = [];
     myArray.push(reportJokes);
     console.log(myArray);
+    fetchDadJoke();
 }
-boton.addEventListener("click", fetchDadJoke);
+Button.addEventListener("click", listArray);
 //====================
 //# sourceMappingURL=app.js.map
