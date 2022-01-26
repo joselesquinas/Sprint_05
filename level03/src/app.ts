@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => { 
+document.addEventListener("DOMContentLoaded", () => {
+   fetchWeather()
    randomJoke() 
-   fetchWeather()});
+});
 
 const API_URL: string = "https://icanhazdadjoke.com";
 const API_URL_Weather:string = "https://api.openweathermap.org/data/2.5/weather?id=3128760&units=metric&appid=d0c9eed8a6b4ce413240d5610426a898";
@@ -12,6 +13,7 @@ const btnPoc = document.getElementById("btn-poc") as HTMLButtonElement;
 const btnRegular = document.getElementById("btn-regular") as HTMLButtonElement;
 const btnMolt = document.getElementById("btn-molt") as HTMLButtonElement;
 const pWeather = document.querySelector("#p-weather") as HTMLParagraphElement;
+
 interface ReportJokes {
    joke: string;
    score: number;
@@ -62,11 +64,26 @@ const fetchWeather = async () => {
    try {
       const response = await fetch (API_URL_Weather);
       const myClimatic = await response.json();
-      console.log(myClimatic.weather);
-      // pWeather.textContent = ;
+      // console.log(myClimatic);
+      console.log(myClimatic.name,myClimatic.weather[0].icon, myClimatic.main.temp ); 
+      nowWeather(myClimatic.weather[0].icon, myClimatic.main.temp ) 
+
    } catch (error) {
       console.log(error)
    }
+}
+// ejercicio 6 API Weather ====================================
+// const btnNew = document.getElementById("btn-new-joke") as HTMLButtonElement;
+const imgNew = document.getElementById("icon") as HTMLImageElement;
+const hTemp = document.getElementById("h-Climatic") as HTMLHtmlElement;
+
+
+const nowWeather = (icon:string,temp:string) => {
+   const icono:string = icon;
+   const urlIcon = `http://openweathermap.org/img/wn/${icono}@2x.png`;
+   imgNew.src = urlIcon;
+   hTemp.textContent = temp;
+   
 }
 
 // ejer. 5 =====================================================
