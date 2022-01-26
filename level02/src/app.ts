@@ -1,7 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => { fetchChuck() });
-// document.addEventListener("DOMContentLoaded", () => { fetchDadJoke() });
+document.addEventListener("DOMContentLoaded", () => { 
+   randomJoke() 
+   fetchWeather()});
+
 const API_URL: string = "https://icanhazdadjoke.com";
-// const API_URL_Weather:string = "";
+const API_URL_Weather:string = "https://api.openweathermap.org/data/2.5/weather?id=3128760&units=metric&appid=d0c9eed8a6b4ce413240d5610426a898";
 const API_URL_Chuck:string = "https://api.chucknorris.io/jokes/random";
 
 const Paragraph = document.querySelector("#p-joke") as HTMLParagraphElement;
@@ -16,7 +18,7 @@ interface ReportJokes {
    date: string;
 }
 
-// API Rest
+// API Rest Jokes
 const fetchDadJoke = async () => {
    try {
       const response = await fetch(API_URL, {
@@ -30,7 +32,6 @@ const fetchDadJoke = async () => {
    }
 }
 
-
 // score
 let newScore: number = 2;
 btnPoc.addEventListener("click", () => { newScore = parseInt(btnPoc.value) });
@@ -38,7 +39,7 @@ btnRegular.addEventListener("click", () => { newScore = parseInt(btnRegular.valu
 btnMolt.addEventListener("click", () => { newScore = parseInt(btnMolt.value) });
 btnNew.addEventListener("click", () => {
    listArray();
-   fetchDadJoke();
+   randomJoke();
 });
 
 //ejercicio 3 =================================================
@@ -53,34 +54,40 @@ const listArray = () => {
    newScore = 2;
    console.log(reportJokes);
    console.log(jokesReports);
-
 }
 
-// ejer. 4 =====================================================
+// ejer. 4  API Weather ========================================
 // API Rest del Temps
-/* 
 const fetchWeather = async () => {
    try {
-      const response = await fetch(API_URL_Chuck, {
-         headers: { Accept: "application/json" },
-      });
+      const response = await fetch (API_URL_Weather);
       const myClimatic = await response.json();
-      console.log(myClimatic);
-      pWeather.textContent = `Avui: ${myClimatic} `;
+      console.log(myClimatic.weather);
+      // pWeather.textContent = ;
    } catch (error) {
       console.log(error)
    }
 }
-*/
+
 // ejer. 5 =====================================================
-// API Rest del Temps
+// API Rest del Chuck Norris
 const fetchChuck = async () => {
    try {
       const response = await fetch(API_URL_Chuck);
       const myChuck = await response.json();
-      console.log(myChuck.value);
+      // console.log(myChuck.value);
       Paragraph.textContent = myChuck.value;
    } catch (error) {
       console.log(error)
+   }
+}
+
+// Joke Random Math.floor(1+ Math.random() * 100);
+const randomJoke = () => {
+   const numRandom:number = Math.floor(1+ Math.random() * 100);
+   if (numRandom % 2 == 0){
+      fetchDadJoke() 
+   } else {
+      fetchChuck()
    }
 }
