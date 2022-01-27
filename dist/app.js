@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 document.addEventListener("DOMContentLoaded", () => {
-    randomJoke();
     fetchWeather();
+    randomJoke();
 });
 const API_URL = "https://icanhazdadjoke.com";
 const API_URL_Weather = "https://api.openweathermap.org/data/2.5/weather?id=3128760&units=metric&appid=d0c9eed8a6b4ce413240d5610426a898";
@@ -29,14 +29,14 @@ const fetchDadJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         });
         const myjoke = yield response.json();
         // console.log(myjoke);
-        Paragraph.textContent = `" ${myjoke.joke} "`;
+        Paragraph.textContent = `${myjoke.joke}`;
     }
     catch (error) {
         console.log(error);
     }
 });
 // score
-let newScore = 2;
+let newScore = 0;
 btnPoc.addEventListener("click", () => { newScore = parseInt(btnPoc.value); });
 btnRegular.addEventListener("click", () => { newScore = parseInt(btnRegular.value); });
 btnMolt.addEventListener("click", () => { newScore = parseInt(btnMolt.value); });
@@ -53,7 +53,7 @@ const listArray = () => {
         date: new Date().toISOString()
     };
     jokesReports.push(reportJokes);
-    newScore = 2;
+    // newScore = 2;
     console.log(reportJokes);
     console.log(jokesReports);
 };
@@ -63,8 +63,9 @@ const fetchWeather = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const response = yield fetch(API_URL_Weather);
         const myClimatic = yield response.json();
-        console.log(myClimatic.weather);
-        // pWeather.textContent = ;
+        // console.log(myClimatic);
+        console.log(myClimatic.name, myClimatic.weather[0].icon, myClimatic.main.temp);
+        nowWeather(myClimatic.weather[0].icon, myClimatic.main.temp);
     }
     catch (error) {
         console.log(error);
@@ -92,5 +93,15 @@ const randomJoke = () => {
     else {
         fetchChuck();
     }
+};
+// ejercicio 6 API Weather ====================================
+// const btnNew = document.getElementById("btn-new-joke") as HTMLButtonElement;
+const imgNew = document.getElementById("icon");
+const hTemp = document.getElementById("h-Climatic");
+const nowWeather = (icon, temp) => {
+    const icono = icon;
+    const urlIcon = `http://openweathermap.org/img/wn/${icono}@2x.png`;
+    imgNew.src = urlIcon;
+    hTemp.textContent = temp;
 };
 //# sourceMappingURL=app.js.map

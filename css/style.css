@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 body{
-   background-color: mintcream;
+   background-color: floralwhite;
+   background-image : url("../img/blob.svg");
 }
 
 p{
@@ -13,6 +14,8 @@ p{
 div{
    padding: 10px;
 }
+/*id="h-Climatic" */
+
 #puntuacio {
   display: flex;
   align-items: center;
@@ -42,4 +45,5 @@ div{
   background-color: mintcream;
   border-radius: 5%;
   font-size: 30px;
+   
 }
