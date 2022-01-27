@@ -35,16 +35,6 @@ const fetchDadJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log(error);
     }
 });
-// score
-let newScore = 0;
-btnPoc.addEventListener("click", () => { newScore = parseInt(btnPoc.value); });
-btnRegular.addEventListener("click", () => { newScore = parseInt(btnRegular.value); });
-btnMolt.addEventListener("click", () => { newScore = parseInt(btnMolt.value); });
-btnNew.addEventListener("click", () => {
-    listArray();
-    randomJoke();
-});
-//ejercicio 3 =================================================
 const jokesReports = [];
 const listArray = () => {
     const reportJokes = {
@@ -57,7 +47,25 @@ const listArray = () => {
     console.log(reportJokes);
     console.log(jokesReports);
 };
-// ejer. 4  API Weather ========================================
+const randomJoke = () => {
+    const numRandom = Math.floor(1 + Math.random() * 100);
+    if (numRandom % 2 == 0) {
+        fetchDadJoke();
+    }
+    else {
+        fetchChuck();
+    }
+};
+let newScore = 0;
+btnPoc.addEventListener("click", () => { newScore = parseInt(btnPoc.value); });
+btnRegular.addEventListener("click", () => { newScore = parseInt(btnRegular.value); });
+btnMolt.addEventListener("click", () => { newScore = parseInt(btnMolt.value); });
+btnNew.addEventListener("click", () => {
+    if (newScore !== 0) {
+        listArray();
+    }
+    randomJoke();
+});
 // API Rest del Temps
 const fetchWeather = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -71,7 +79,6 @@ const fetchWeather = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log(error);
     }
 });
-// ejer. 5 =====================================================
 // API Rest del Chuck Norris
 const fetchChuck = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -84,18 +91,6 @@ const fetchChuck = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log(error);
     }
 });
-// Joke Random Math.floor(1+ Math.random() * 100);
-const randomJoke = () => {
-    const numRandom = Math.floor(1 + Math.random() * 100);
-    if (numRandom % 2 == 0) {
-        fetchDadJoke();
-    }
-    else {
-        fetchChuck();
-    }
-};
-// ejercicio 6 API Weather ====================================
-// const btnNew = document.getElementById("btn-new-joke") as HTMLButtonElement;
 const imgNew = document.getElementById("icon");
 const hTemp = document.getElementById("h-Climatic");
 const nowWeather = (icon, temp) => {

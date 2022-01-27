@@ -34,17 +34,6 @@ const fetchDadJoke = async () => {
    }
 }
 
-// score
-let newScore: number = 0;
-btnPoc.addEventListener("click", () => { newScore = parseInt(btnPoc.value) });
-btnRegular.addEventListener("click", () => { newScore = parseInt(btnRegular.value) });
-btnMolt.addEventListener("click", () => { newScore = parseInt(btnMolt.value) });
-btnNew.addEventListener("click", () => {
-   listArray();
-   randomJoke();
-});
-
-//ejercicio 3 =================================================
 const jokesReports: ReportJokes[] = []
 const listArray = () => {
    const reportJokes: ReportJokes = {
@@ -58,7 +47,27 @@ const listArray = () => {
    console.log(jokesReports);
 }
 
-// ejer. 4  API Weather ========================================
+
+const randomJoke = () => {
+   const numRandom:number = Math.floor(1+ Math.random() * 100);
+   if (numRandom % 2 == 0){
+      fetchDadJoke() 
+   } else {
+      fetchChuck()
+   }
+}
+
+let newScore: number = 0;
+btnPoc.addEventListener("click", () => { newScore = parseInt(btnPoc.value) });
+btnRegular.addEventListener("click", () => { newScore = parseInt(btnRegular.value) });
+btnMolt.addEventListener("click", () => { newScore = parseInt(btnMolt.value) });
+btnNew.addEventListener("click", () => {
+   if (newScore !== 0){
+      listArray();
+   }
+   randomJoke();
+});
+
 // API Rest del Temps
 const fetchWeather = async () => {
    try {
@@ -73,7 +82,6 @@ const fetchWeather = async () => {
    }
 }
 
-// ejer. 5 =====================================================
 // API Rest del Chuck Norris
 const fetchChuck = async () => {
    try {
@@ -86,26 +94,12 @@ const fetchChuck = async () => {
    }
 }
 
-// Joke Random Math.floor(1+ Math.random() * 100);
-const randomJoke = () => {
-   const numRandom:number = Math.floor(1+ Math.random() * 100);
-   if (numRandom % 2 == 0){
-      fetchDadJoke() 
-   } else {
-      fetchChuck()
-   }
-}
-
-// ejercicio 6 API Weather ====================================
-// const btnNew = document.getElementById("btn-new-joke") as HTMLButtonElement;
 const imgNew = document.getElementById("icon") as HTMLImageElement;
 const hTemp = document.getElementById("h-Climatic") as HTMLHtmlElement;
-
 
 const nowWeather = (icon:string,temp:string) => {
    const icono:string = icon;
    const urlIcon = `http://openweathermap.org/img/wn/${icono}@2x.png`;
    imgNew.src = urlIcon;
    hTemp.textContent = temp;
-   
 }
