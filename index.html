@@ -8,31 +8,39 @@
    <title>Document</title>
    <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
-   <div>
-      <img id="icon"  src="" alt="Icono del tiempo" />
-      <h1 id="h-Climatic"></h1>
-   </div>
-   <div  style="text-align: center;">   
-      <img src="./img/blob.svg" alt="sonrisas" />
-   </div> 
-   <div class="flex-container">         
-      <div class="my-card">
-         <h2 id="titulo">Preparat per riure? 🤣</h2>        
+
+   <header>
+      <div class="icontemp">
+         <img id="icon" src="" alt="Icono del tiempo" />
+         <p><span>|</span></p>
+         <p><span id="h-Climatic"></span><span>ºC</span></p>
+      </div>
+   </header>
+
+   <section>
+      <img src="./img/blob3.svg" alt="">
+      <div class="flex-container">
+         <div class="my-card">
+            <h2 id="titulo">Preparat per riure? </h2>
             <div>
                <p id="p-joke"></p>
             </div>
-            <div><p>Puntuació:</p></div>
             <div id="puntuacio">
                <button id="btn-poc" class="btn-puntuacio" value="1">1</button>
                <button id="btn-regular" class="btn-puntuacio" value="2">2</button>
                <button id="btn-molt" class="btn-puntuacio" value="3">3</button>
             </div>
             <div style="text-align: center;">
-               <button id="btn-new-joke" >Seguent acudit</button>
-            </div>               
+               <button id="btn-new-joke">Seguent acudit</button>
+            </div>
+         </div>
       </div>
-   </div>
+
+   </section>
+
    <script src="dist/app.js"></script>
 </body>
+
 </html>

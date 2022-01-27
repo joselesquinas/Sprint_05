@@ -21,6 +21,8 @@ const btnPoc = document.getElementById("btn-poc");
 const btnRegular = document.getElementById("btn-regular");
 const btnMolt = document.getElementById("btn-molt");
 const pWeather = document.querySelector("#p-weather");
+const imgNew = document.getElementById("icon");
+const hTemp = document.getElementById("h-Climatic");
 let newScore = 0;
 // API Rest Jokes
 const fetchDadJoke = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -45,7 +47,6 @@ const listArray = () => {
     };
     jokesReports.push(reportJokes);
     newScore = 0;
-    console.log(reportJokes);
     console.log(jokesReports);
 };
 const randomJoke = () => {
@@ -91,8 +92,6 @@ const fetchChuck = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log(error);
     }
 });
-const imgNew = document.getElementById("icon");
-const hTemp = document.getElementById("h-Climatic");
 const nowWeather = (icon, temp) => {
     const icono = icon;
     const urlIcon = `http://openweathermap.org/img/wn/${icono}@2x.png`;

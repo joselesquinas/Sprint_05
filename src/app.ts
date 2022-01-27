@@ -14,6 +14,9 @@ const btnRegular = document.getElementById("btn-regular") as HTMLButtonElement;
 const btnMolt = document.getElementById("btn-molt") as HTMLButtonElement;
 const pWeather = document.querySelector("#p-weather") as HTMLParagraphElement;
 
+const imgNew = document.getElementById("icon") as HTMLImageElement;
+const hTemp = document.getElementById("h-Climatic") as HTMLHtmlElement;
+
 interface ReportJokes {
    joke: string;
    score: number;
@@ -43,10 +46,8 @@ const listArray = () => {
    };
    jokesReports.push(reportJokes);
    newScore = 0;
-   console.log(reportJokes);
    console.log(jokesReports);
 }
-
 
 const randomJoke = () => {
    const numRandom:number = Math.floor(1+ Math.random() * 100);
@@ -56,7 +57,6 @@ const randomJoke = () => {
       fetchChuck()
    }
 }
-
 
 btnPoc.addEventListener("click", () => { newScore = parseInt(btnPoc.value) });
 btnRegular.addEventListener("click", () => { newScore = parseInt(btnRegular.value) });
@@ -93,9 +93,6 @@ const fetchChuck = async () => {
       console.log(error)
    }
 }
-
-const imgNew = document.getElementById("icon") as HTMLImageElement;
-const hTemp = document.getElementById("h-Climatic") as HTMLHtmlElement;
 
 const nowWeather = (icon:string,temp:string) => {
    const icono:string = icon;
