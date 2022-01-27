@@ -19,7 +19,7 @@ interface ReportJokes {
    score: number;
    date: string;
 }
-
+let newScore: number = 0;
 // API Rest Jokes
 const fetchDadJoke = async () => {
    try {
@@ -42,7 +42,7 @@ const listArray = () => {
       date: new Date().toISOString()
    };
    jokesReports.push(reportJokes);
-   // newScore = 2;
+   newScore = 0;
    console.log(reportJokes);
    console.log(jokesReports);
 }
@@ -57,7 +57,7 @@ const randomJoke = () => {
    }
 }
 
-let newScore: number = 0;
+
 btnPoc.addEventListener("click", () => { newScore = parseInt(btnPoc.value) });
 btnRegular.addEventListener("click", () => { newScore = parseInt(btnRegular.value) });
 btnMolt.addEventListener("click", () => { newScore = parseInt(btnMolt.value) });
