@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+.container { 
+   width: 800px; 
+   margin: 0 auto; 
+}
 
 h2{
    color: honeydew;
@@ -48,25 +52,14 @@ p span{
   font-size: 20px;
   color: darkred;
   border-radius: 40%;
+
 }
 
-.my-card {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 50%;
-  height: 50%;
-  margin: auto;
-  border-radius: 5%;
-  font-size: 25px;
-}
+
 
 img{
    height: 850px;
    width: 900px;
-
 }
 
 .my-card div{
@@ -79,6 +72,24 @@ img{
 }
 .btn-puntuacio{
    font-size: 25px;
-
+}
+/* ================================== */
+.joke{
+   position: relative;
+   display: inline-block;
+   text-align: center;
+}
+.joke-encima{
+   position: absolute;
+   top: 10px;
+   left: 10px;
+}
+.joke-centrado{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
 
+
+   
